@@ -2,8 +2,8 @@ const path = require('path')
 const htmlPlugin = require('html-webpack-plugin')
 const cleanDist = require('clean-webpack-plugin')
 const webpack = require('webpack')
-const src = './src'
-const dist = './dist'
+const src = path.resolve(__dirname, './src')
+const dist = path.resolve(__dirname, './dist')
 
 module.exports = {
   mode: 'development',
@@ -16,7 +16,7 @@ module.exports = {
     main: [`${src}/main.js`]
   },
   output: {
-    path: path.resolve(__dirname, dist),
+    path: dist,
     filename: '[name].[hash].js'
   },
   module: {
@@ -37,10 +37,13 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      '@pages': `${src}/pages`
+    }
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: dist,
     port: '8080',
     open: true,
     hot: true
