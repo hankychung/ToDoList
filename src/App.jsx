@@ -1,11 +1,12 @@
 import React from 'react'
 import { hot } from 'react-hot-loader/root'
+import { BrowserRouter, Route } from 'react-router-dom'
+import ToDoList from '@pages/todoList/TodoList'
 
-const App = () => (<div>Home!!!</div>)
-// class App extends React.Component {
-//   render() {
-//     return <div>Home</div>
-//   }
-// }
+const App = () => (
+  <BrowserRouter>
+    <Route path="/" component={ToDoList} />
+  </BrowserRouter>
+)
 
 export default hot(App)
