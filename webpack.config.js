@@ -1,6 +1,7 @@
 const path = require('path')
 const htmlPlugin = require('html-webpack-plugin')
 const cleanDist = require('clean-webpack-plugin')
+const webpack = require('webpack')
 const src = './src'
 const dist = './dist'
 
@@ -27,7 +28,8 @@ module.exports = {
     new htmlPlugin({
       template: `${src}/index.html`
     }),
-    new cleanDist()
+    new cleanDist(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.json']
@@ -35,6 +37,8 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     port: '8080',
-    open: true
-  }
+    open: true,
+    hot: true
+  },
+  devtool: 'cheap-module-eval-source-map'
 }

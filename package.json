@@ -9,7 +9,8 @@
     }
   },
   "scripts": {
-    "lint": "eslint --ext .js  --ext .jsx src/",
+    "lint": "eslint --ext .js --ext .jsx src/",
+    "lintfix": "eslint --fix --ext .js --ext .jsx src/",
     "start": "webpack-dev-server"
   },
   "repository": {
@@ -50,6 +51,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "react-hot-loader": "^4.8.0"
   }
 }
