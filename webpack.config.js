@@ -13,13 +13,16 @@ module.exports = {
     path: path.resolve(__dirname, dist),
     filename: '[name].[hash].js'
   },
-module: {
-  rules: [{
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    use: ['babel-loader', 'eslint-loader'] // loader是从右到左加载
-  }]
-},
+  module: {
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: ['babel-loader', 'eslint-loader'] // loader是从右到左加载
+    }, {
+      test: /\.scss$/,
+      use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+    }]
+  },
   plugins: [
     new htmlPlugin({
       template: `${src}/index.html`
@@ -28,5 +31,10 @@ module: {
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.json']
+  },
+  devServer: {
+    contentBase: './dist',
+    port: '8080',
+    open: true
   }
 }
