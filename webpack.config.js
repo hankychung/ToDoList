@@ -8,7 +8,12 @@ const dist = './dist'
 module.exports = {
   mode: 'development',
   entry: {
-    main: ['@babel/polyfill', `${src}/main.js`] //从左到右加载，先全局加载polyfill
+    /**
+     *  main: ['@babel/polyfill', './src/main.js']
+     * 从左到右加载，先全局加载polyfill, 再加载项目代码
+     * (已废弃，转为在.babelrc中配置为按需加载)
+     */
+    main: [`${src}/main.js`]
   },
   output: {
     path: path.resolve(__dirname, dist),
@@ -40,5 +45,10 @@ module.exports = {
     open: true,
     hot: true
   },
-  devtool: 'cheap-module-eval-source-map'
+  devtool: 'cheap-module-eval-source-map',
+  performance: {
+    hints: 'warning',
+    maxAssetSize: 10240000,
+    maxEntrypointSize: 10240000
+  }
 }
