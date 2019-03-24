@@ -1,0 +1,15 @@
+# editorConfig编辑器配置 https://www.jianshu.com/p/00ac7bd5e74e
+
+# 在当前项目根目录下添加.editorconfig文件, vscode安装EditorConfig
+# end_of_line<"lf" | "cr" | "crlf"> 换行符类型
+
+# 是否是顶级配置文件，设置为true的时候才会停止搜索.editorconfig文件
+root = true
+
+[*]
+charset = utf-8
+trim_trailing_whitespace = true # 末尾行去掉尾随的空格
+insert_final_newline = true # 末尾行后加多一行空行
+indent_size = 2
+indent_style = space # or tab
+end_of_line = lf # <"lf" | "cr" | "crlf"> 换行符类型

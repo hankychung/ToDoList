@@ -7,19 +7,19 @@ const dist = './dist'
 module.exports = {
   mode: 'development',
   entry: {
-    main: ['@babel/polyfill', `${src}/main.js`] //从左到右加载，先全局加载polyfill，全局注入ES6+ API
+    main: ['@babel/polyfill', `${src}/main.js`] //从左到右加载，先全局加载polyfill
   },
   output: {
     path: path.resolve(__dirname, dist),
     filename: '[name].[hash].js'
   },
-  module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      use: ['babel-loader']
-    }]
-  },
+module: {
+  rules: [{
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: ['babel-loader', 'eslint-loader'] // loader是从右到左加载
+  }]
+},
   plugins: [
     new htmlPlugin({
       template: `${src}/index.html`
