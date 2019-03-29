@@ -27,6 +27,12 @@ module.exports = {
     }, {
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+    }, {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader', 'postcss-loader']
+    }, {
+      test: /\.(ttf|woff)$/,
+      use: ['file-loader']
     }]
   },
   plugins: [
@@ -39,7 +45,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-      '@pages': `${src}/pages`
+      '@pages': `${src}/pages`,
+      '@cmps': `${src}/components`,
+      '@style': `${src}/style`,
     }
   },
   devServer: {
